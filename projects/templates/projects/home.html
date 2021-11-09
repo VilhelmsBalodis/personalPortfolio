@@ -1,0 +1,35 @@
+{% extends 'projects/navbar.html' %}
+{% load static %}
+{% block content %}
+
+    <div class = "row justify-content-center my-3">
+        <div class = "col-3">
+            <img src = "{% static 'projects/Profile Picture.jpg' %}" width = 300 height = 300>
+        </div>
+    </div>
+
+    <div class = "row justify-content-center mb-3">
+        <div class = "col-5 text-center">
+            <h4>Hi! My name is Vilhelms. I am a bass player for band <a class = "link" href = "https://www.facebook.com/bandMarlena" target = "_blank">Marlēna</a>. In free time enyoy soldering guitar effect pedals and motorcycle rindig.</h4>
+        </div>
+    </div>
+    
+    <div class = "row">
+        {% for work in project %}
+        <div class = "col-lg-4 col-md-6">
+            {% if work.url %}
+            <a href = "{{ work.url }}" target = "_blank">
+                <img src = "{{ work.image.url }}" width = 300 height = 300>
+                <h3>{{ work.title }}</h3>
+            </a>
+            {% else %}
+            <img src = "{{ work.image.url }}" width = 300 height = 300>
+            <h3>{{ work.title }}</h3>
+            {% endif %}
+            <br/>
+            <p>{{ work.description }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    
+{% endblock %}

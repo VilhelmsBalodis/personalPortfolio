@@ -1,0 +1,20 @@
+{% extends 'projects/navbar.html' %}
+{% load static %}
+{% block content %}
+
+<h3 class = "text-center mb-5">Vilhelms has written {{ storries.count }} blog{{ storries.count|pluralize }}</h3>
+
+{% for storry in storries %}
+<div justify-content-center my-3>
+    <div class = "col-md-10">
+        <a href = "{% url 'blog:detailedBlog' storry.id %}"><h2>{{ storry.title }}</h2></a>
+        <br/>
+        <h5 class = "text-muted">{{ storry.pubDate|date:'M d Y'|upper }}</h5>
+        <br/>
+        <p>{{ storry.body|striptags|truncatechars:100 }}</p>
+        <br/>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

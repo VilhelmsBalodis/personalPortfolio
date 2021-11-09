@@ -1,0 +1,9 @@
+{% extends 'projects/navbar.html' %}
+{% load static %}
+{% block content %}
+
+<h2 class = "text-center mt-5">{{ work.title }}</h2>
+<h4 class = "text-center text-muted mb-5">-- {{ work.pubDate|date:'F jS Y' }} --</h4>
+{{ work.body|safe }}
+
+{% endblock %}
